@@ -2,7 +2,7 @@ var fs = require('fs');
 const topHelper = require('./topHelper');
 
 var openTopFromPath = (fileName) => {
-	var buffer = fs.readFileSync('example.top');
+	var buffer = fs.readFileSync(fileName);
 	var topFile = topHelper.openTop(buffer);
 	// console.log(topFile);
 	// console.log(buffer.toString('utf8', 0, 3));
