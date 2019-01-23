@@ -1,6 +1,4 @@
 
-var Int64 = require('node-int64');
-
 //var offset;
 var openTop = (byteBuffer) => {
 	var offset = 0;
@@ -333,11 +331,6 @@ var readPoint = (byteBuffer, offset) => {
 	offset = offset + 4;
 	return [offset, {x: x, y:y}];
 };
-
-var readInt64LEasFloat = (buffer, offset) => {
-  var int64 = new Int64(buffer, 0);
-  return int64.toNumber(true);
-}
 
 var isBitSet = (b, pos) => {
 	return (b & (1 << pos)) != 0;
