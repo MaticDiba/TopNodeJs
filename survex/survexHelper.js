@@ -57,5 +57,5 @@ var getShotsData = (file) => {
 
 module.exports = {
     processFile,
-    analyzeFileCollection
+    getMetaForCollection
 }
