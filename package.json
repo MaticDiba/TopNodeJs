@@ -4,9 +4,12 @@
   "description": "Library for managing PocketTopo (*.top) files.",
   "main": "app.js",
   "dependencies": {
-    "node-int64": "^0.4.0"
+    "node-int64": "^0.4.0",
+    "tslint": "^5.12.1"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "@types/node": "^10.12.18"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },

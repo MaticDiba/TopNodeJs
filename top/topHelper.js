@@ -36,7 +36,7 @@ var openTop = (byteBuffer) => {
 	var mappingSideview = readDrawing(byteBuffer);
 	var sideview = mappingSideview[1];
 	
-	return {trips: trips, shots: shots, references: references, outline: outline, sideview: sideview};
+	return new TopFile(trips, shots, references, mapping, outline, sideview);
 };
 
 var readByteString = (byteBuffer, end) => {
