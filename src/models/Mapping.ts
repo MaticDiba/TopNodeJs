@@ -1,5 +1,6 @@
+import { Point } from "./Point";
 
-class Mapping{
+export class Mapping{
     private _point: Point;
     get point(): Point {
         return this._point;

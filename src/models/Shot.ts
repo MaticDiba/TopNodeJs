@@ -1,5 +1,6 @@
+import { Id } from "./Id";
 
-class Shot{
+export class Shot{
     
     private _idFrom: Id;
     get idFrom(): Id {

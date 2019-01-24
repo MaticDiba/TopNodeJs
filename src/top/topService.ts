@@ -5,7 +5,7 @@ export class TopService {
     private _topHelper: TopHelper;
 
     constructor(){
-        
+        this._topHelper = new TopHelper();
     }
     openTopFromPath(fileName: string){
         var buffer = fs.readFileSync(fileName);
@@ -17,6 +17,7 @@ export class TopService {
     }
 
     openTopFromStream(buffer: Buffer, fileName: string){
+        console.log(this._topHelper);
         var topFile = this._topHelper.openTop(buffer);
         // console.log(topFile);
         // console.log(buffer.toString('utf8', 0, 3));

@@ -1,3 +1,14 @@
+import { Trip } from "../models/Trip";
+import { TopFile } from "../models/TopFile";
+import { Drawing } from "../models/Drawing";
+import { PolygonElement } from "../models/PolygonElement";
+import { XSectionElement } from "../models/XSectionElement";
+import { Point } from "../models/Point";
+import { Mapping } from "../models/Mapping";
+import { Shot } from "../models/Shot";
+import { TripReference } from "../models/TripReference";
+import { Id } from "../models/Id";
+
 //import { TopFile } from "../models/TopFile";
 
 
@@ -5,8 +16,12 @@ export class TopHelper{
 
     private offset: number;
 
+    constructor(){
+        this.offset = 0;
+    }
     openTop(buffer: Buffer): TopFile {
         this.offset = 0;
+        
         var t = this.readByteString(buffer, 1);
         var o = this.readByteString(buffer, 2);
         var p = this.readByteString(buffer, 3);
@@ -18,13 +33,13 @@ export class TopHelper{
         }
 
         var tripCount = this.readInt32(buffer);
-
+        
         var trips = this.readTripCollection(buffer, tripCount);
         
         var shotCount = this.readInt32(buffer);
         
         var shots = this.readShotCollection(buffer, shotCount);
-        
+     
         var refCount = this.readInt32(buffer);
         
         var references = this.readReferenceCollection(buffer, refCount);
@@ -44,8 +59,8 @@ export class TopHelper{
         
         var typeOfElement = this.readByteInt(buffer);
         
-        var polygonElements: PolygonElement[];
-        var xsectionElements: XSectionElement[];
+        var polygonElements: Array<PolygonElement> = [];
+        var xsectionElements: Array<XSectionElement> = [];
         while(typeOfElement !== 0){
             if(typeOfElement === 1){
                 var polyElement = this.readPolygonElement(buffer);
@@ -80,7 +95,7 @@ export class TopHelper{
     }
 
     private readPointCollection(buffer: Buffer, pointCount: Number): Point[] {
-        var pointCollection: Point[];
+        var pointCollection: Point[] = [];
         var i;
         for (i = 0; i < pointCount; i++) { 
             var point = this.readPoint(buffer);
@@ -111,7 +126,7 @@ export class TopHelper{
             return null;
         }
         var i;
-        var tripCollection: Trip[];
+        var tripCollection: Trip[] = [];
         for (i = 0; i < tripCount; i++) { 
             var trip = this.readTrip(byteBuffer);
             tripCollection.push(trip);
@@ -126,12 +141,12 @@ export class TopHelper{
         var comment = this.readComment(byteBuffer);
     
         var declination = this.readInt16(byteBuffer);
-    
+        
         return new Trip(time, comment, declination);
     }
 
     private readShotCollection(byteBuffer: Buffer, shotCount: number): Shot[]{
-        var shotCollection: Shot[];
+        var shotCollection: Array<Shot> = [];
         var i;
         
         for (i = 0; i < shotCount; i++) { 
@@ -163,7 +178,7 @@ export class TopHelper{
     }
 
     private readReferenceCollection(byteBuffer: Buffer, referenceCount: number): TripReference[]{
-        var refCollection: TripReference[];
+        var refCollection: TripReference[] = [];
         var i;
         
         for (i = 0; i < referenceCount; i++) { 
@@ -181,7 +196,7 @@ export class TopHelper{
 	    var altitude = this.readInt32(byteBuffer) / 1000;
 	
 	    var commentArray = this.readComment(byteBuffer);
-	    var comment = commentArray[1];
+	    var comment = commentArray;
 	
 	    return new TripReference(station, east, north, altitude, comment);
     }
@@ -226,6 +241,7 @@ export class TopHelper{
         }
         else if (idString.length <= 4)
         {
+            console.log(idString);
             return new Id((id)*0.1);//.toString();//Convert.ToDecimal(val)*(decimal)0.1;
         }else{	
             var firstPart = idString.substring(0, idString.length - 4);
@@ -289,7 +305,7 @@ export class TopHelper{
     
     private readByteInt(byteBuffer: Buffer):number {
         var res = byteBuffer.readInt8(this.offset);
-        this.offset += 4;
+        this.offset += 1;
         return res;
     }
 

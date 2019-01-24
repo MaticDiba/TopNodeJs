@@ -1,5 +1,8 @@
+import { Mapping } from "./Mapping";
+import { PolygonElement } from "./PolygonElement";
+import { XSectionElement } from "./XSectionElement";
 
-class Drawing{
+export class Drawing{
     private _mapping: Mapping;
     get mapping(): Mapping {
         return this._mapping;

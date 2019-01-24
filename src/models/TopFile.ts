@@ -1,5 +1,11 @@
+import { Trip } from "./Trip";
+import { Shot } from "./Shot";
+import { TripReference } from "./TripReference";
+import { Mapping } from "./Mapping";
+import { Outline } from "./Outline";
+import { SideView } from "./SideView";
 
-class TopFile {
+export class TopFile {
     private _fileName: string;
     get fileName(): string {
         return this._fileName;

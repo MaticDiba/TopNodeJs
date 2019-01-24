@@ -1,6 +1,7 @@
+import { Point } from "./Point";
 
 
-class PolygonElement {
+export class PolygonElement {
     private _color: number;
     get color(): number {
         return this._color;

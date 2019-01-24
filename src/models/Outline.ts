@@ -1,5 +1,5 @@
 
 
-class Outline{
+export class Outline{
     
 }

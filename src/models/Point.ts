@@ -1,6 +1,6 @@
 
 
-class Point{
+export class Point{
     private _x: number;
     get x(): number {
         return this._x;

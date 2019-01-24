@@ -1,5 +1,6 @@
+import { Id } from "./Id";
 
-class TripReference {
+export class TripReference {
     private _station: Id;
     get station(): Id {
         return this._station;

@@ -1,5 +1,6 @@
 
-class Id{
+
+export class Id{
 
     private _id: number;
     get id(): number {

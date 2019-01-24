@@ -15,14 +15,16 @@ class App{
         this._topService = new TopService();
         this._survexService = new SurvexService();
          
-        var buffer = fs.readFileSync('../example.top');
-        var topFileFromStream = this._topService.openTopFromStream(buffer, '../example.top');
+        var buffer = fs.readFileSync('example.top');
+        var topFileFromStream = this._topService.openTopFromStream(buffer, 'example.top');
         topFileFromStream.fileIdentifier = 'tr01';
         // console.log(topFileFromStream.shots.slice(1,3));
-        // console.log(topFileFromStream.shots);
+        console.log(topFileFromStream.shots);
         
-        var svxResult = this._survexService.createSurvexForTopFile(topFileFromStream);
+        var svxResult = "svxresult todo:";//this._survexService.createSurvexForTopFile(topFileFromStream);
         
         console.log(svxResult);
     }
 }
+
+export default new App();

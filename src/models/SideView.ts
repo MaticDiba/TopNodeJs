@@ -1,6 +1,6 @@
 
 
-class SideView{
+export class SideView{
 
     
 }

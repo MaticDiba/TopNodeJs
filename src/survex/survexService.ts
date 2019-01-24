@@ -1,3 +1,4 @@
+import { TopFile } from "../models/TopFile";
 
 
 export class SurvexService{

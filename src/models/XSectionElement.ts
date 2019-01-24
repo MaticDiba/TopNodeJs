@@ -1,6 +1,8 @@
+import { Point } from "./Point";
+import { Id } from "./Id";
 
 
-class XSectionElement{
+export class XSectionElement{
     //pointPosition: pointPos, idStation: idStation, direction: direction
 
     private _pointPosition: Point;
