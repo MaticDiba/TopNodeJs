@@ -20,17 +20,17 @@ console.log(svxResult);
 
 // TODO for collection of files
 
-fs.readdir('./temp/', (err, files) => {
-    console.log(files);
-    files.forEach(file => {
-        var topFile = topService.openTopFromPath('./temp/'+file);
-        console.log(file);
-        topFile.shots.forEach(shot => {
-            if(shot.idFrom != null && shot.idTo != null){
+// fs.readdir('./temp/', (err, files) => {
+//     console.log(files);
+//     files.forEach(file => {
+//         var topFile = topService.openTopFromPath('./temp/'+file);
+//         console.log(file);
+//         topFile.shots.forEach(shot => {
+//             if(shot.idFrom != null && shot.idTo != null){
                 
                 
-                console.log(`${shot.idFrom.id}\t${shot.idTo.id}\t${shot.dist}\t${shot.azimuth}\t${shot.incl}`);
-            }
-        });
-    });
-  })
+//                 console.log(`${shot.idFrom.id}\t${shot.idTo.id}\t${shot.dist}\t${shot.azimuth}\t${shot.incl}`);
+//             }
+//         });
+//     });
+//   })
