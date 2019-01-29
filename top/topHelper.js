@@ -36,7 +36,7 @@ var openTop = (byteBuffer) => {
 	var mappingSideview = readDrawing(byteBuffer);
 	var sideview = mappingSideview[1];
 	
-	return new TopFile(trips, shots, references, mapping, outline, sideview);
+	return shots;//new TopFile(trips, shots, references, mapping, outline, sideview);
 };
 
 var readByteString = (byteBuffer, end) => {
@@ -91,16 +91,24 @@ var readInt64 = (byteBuffer) => {
 var readId = (byteBuffer) => {
 	var id = readUInt32(byteBuffer);
 	var idString = id.toString(16);
+	
+	
 	if (id == 2147483648){		
 		return null;//Convert.ToDouble(val);
 	}
 	else if (idString.Length <= 4)
 	{
+		
+		
+		if(idString == '0'){
+		}
 		return ((id)*0.1).toString();//Convert.ToDecimal(val)*(decimal)0.1;
 	}else{	
 		var firstPart = idString.substring(0, idString.length - 4);
 		var secondPart = idString.substring(idString.length - 4);
-		var realId = parseFloat(parseInt(firstPart, 16) + '.' + parseInt(secondPart, 16));
+		// console.log('juhu', idString);
+		var realId = (parseInt(firstPart, 16) + '.' + parseInt(secondPart, 16));
+		//console.log('juhu', realId);
 		return {id: realId};
 	}
 	return {id: id};
