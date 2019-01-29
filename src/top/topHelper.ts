@@ -19,7 +19,7 @@ export class TopHelper{
     constructor(){
         this.offset = 0;
     }
-    openTop(buffer: Buffer): TopFile {
+    public openTop(buffer: Buffer): TopFile {
         this.offset = 0;
         
         var t = this.readByteString(buffer, 1);
@@ -242,14 +242,14 @@ export class TopHelper{
         else if (idString.length <= 4)
         {
             console.log(idString);
-            return new Id((id)*0.1);//.toString();//Convert.ToDecimal(val)*(decimal)0.1;
+            return new Id(((id)*0.1).toString());//.toString();//Convert.ToDecimal(val)*(decimal)0.1;
         }else{	
             var firstPart = idString.substring(0, idString.length - 4);
             var secondPart = idString.substring(idString.length - 4);
             var realId = parseFloat(parseInt(firstPart, 16) + '.' + parseInt(secondPart, 16));
-            return new Id(realId);
+            return new Id(realId.toString());
         }
-        return new Id(id);
+        return new Id(id.toString());
     }
 
 

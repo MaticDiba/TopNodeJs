@@ -2,15 +2,15 @@
 
 export class Id{
 
-    private _id: number;
-    get id(): number {
+    private _id: string;
+    get id(): string {
         return this._id;
     }
-    set id(newObject: number) {
+    set id(newObject: string) {
         this._id = newObject;
     }
 
-    constructor(id: number){
+    constructor(id: string){
         this._id = id;
     }
 }
